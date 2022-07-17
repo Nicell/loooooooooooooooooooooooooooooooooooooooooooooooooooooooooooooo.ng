@@ -18,7 +18,10 @@
 
     var decoded = atob(pieces.join(''));
 
-    window.location.href = decoded;
+    try {
+      new URL(decoded);
+      window.location.href = decoded;
+    } catch {}
   </script>
   404
 </main>
