@@ -7,6 +7,7 @@ import Layout from "../layouts/Layout.astro";
 	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 	<script is:inline>
 		var bases = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '+', '/', '='];
+
 		function longer() {
 			var website = document.getElementById("website").value;
 			try {
@@ -33,6 +34,10 @@ import Layout from "../layouts/Layout.astro";
 			document.getElementById('result').href = url;
 			document.getElementById('result').innerHTML = url;
 			navigator.clipboard.writeText(url);
+			document.getElementById("original").innerHTML = website.length;
+			document.getElementById("new").innerHTML = url.length;
+			document.getElementById("percent").innerHTML = Math.round((url.length / website.length - 1) * 100);
+			document.getElementById("stats").style.visibility = "visible";
 			Toastify({
 				text: "Copied to clipboard!",
 				gravity: "top",
@@ -46,8 +51,18 @@ import Layout from "../layouts/Layout.astro";
 			<input id="website" autofocus />
 			<button onclick="longer()">lo.nger</button>
 		</div>
+		<div id="stats" style="visibility: hidden">Original: <span id="original"></span>, New: <span id="new"></span>, +<span id="percent"></span>%</div>
 		<a id="result" target="_blank"></a>
 	</main>
+	<script is:inline>
+		document.getElementById("website").addEventListener("keypress", function(event) {
+			console.log(event);
+			if (event.key === "Enter") {
+				event.preventDefault();
+				longer();
+			}
+		});
+	</script>
 </Layout>
 
 <style>
@@ -85,7 +100,7 @@ import Layout from "../layouts/Layout.astro";
 
 	.input {
 		width: 100%;
-		height: 100px;
+		height: 5rem;
 		box-sizing: border-box;
 		display: flex;
 		border-radius: 25px;
@@ -97,28 +112,30 @@ import Layout from "../layouts/Layout.astro";
 	}
 
 	#website {
-		all: unset;
-		width: auto;
-		flex-grow: 1;
+		width: 4rem;
+		flex: 1;
 		padding: 1rem;
-		font-size: 2rem;
 	}
 
 	.input button {
-		all:unset;
 		padding: 0 1.5rem;
+		flex-shrink: 0;
 		cursor: pointer;
 		background-image: var(--astro-gradient);
 		background-size: 100% 200%;
 		background-position-y: 100%;
 		animation: pulse 4s ease-in-out infinite;
 		color: #eee;
-		font-size: 2rem;
 	}
 
 	#result {
 		color: #0091ea;
 		font-size: 1.5rem;
 		word-break: break-all;
+	}
+
+	#stats {
+		font-size: var(--font-size-base);
+		margin: 1rem 0;
 	}
 </style>
