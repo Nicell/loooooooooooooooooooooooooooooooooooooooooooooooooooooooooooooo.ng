@@ -1,42 +1,10 @@
-# Welcome to [Astro](https://astro.build)
+# Welcome to [loooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo.ng](https://loooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo.ng)
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
+Are your links too concise and ledgible? Then [loooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo.ng](https://loooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo.ng) is the perfect solution.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+This URL lengthener will grow your URL's length by an order of magnitude!
 
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```
-/
-├── public/
-│   └── favicon.ico
-├── src/
-│   ├── components/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
-
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components or layouts.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command           | Action                                       |
-| :---------------- | :------------------------------------------- |
-| `npm install`     | Installs dependencies                        |
-| `npm run dev`     | Starts local dev server at `localhost:3000`  |
-| `npm run build`   | Build your production site to `./dist/`      |
-| `npm run preview` | Preview your build locally, before deploying |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Here's a list of some useful applications:
+ -  
+ 
+ You can also re-input the lengthened URL to get an even bigger URL! Note that some older browsers only support up to 2,000 characters, and our servers can only handle 32,000 characters.
