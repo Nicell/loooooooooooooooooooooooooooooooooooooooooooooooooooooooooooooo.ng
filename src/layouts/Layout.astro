@@ -17,6 +17,9 @@ const { title } = Astro.props as Props;
 	</head>
 	<body>
 		<slot />
+		<footer>
+			<span>Made by <a href="https://nick.winans.io" target="_blank">Nick Winans</a>. See the <a href="https://github.com/Nicell/loooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo.ng" target="_blank">source code</a>.</span>
+		</footer>
 	</body>
 </html>
 <style>
@@ -40,6 +43,7 @@ const { title } = Astro.props as Props;
 
 	body {
 		margin: 0;
+		padding-bottom: 2rem;
 	}
 
 	:global(h1) {
@@ -54,5 +58,21 @@ const { title } = Astro.props as Props;
 	:global(button) {
 		all: unset;
 		font-size: var(--font-size-lg);
+	}
+
+	footer {
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding: 0.5rem;
+		background: #eee;
+		position: fixed;
+		bottom: 0;
+		font-size: var(--font-size-base);
+	}
+
+	a {
+		color: #0091ea;
 	}
 </style>
