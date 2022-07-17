@@ -53,15 +53,14 @@ import Layout from "../layouts/Layout.astro";
 	<main>
 		<h1>Make your links <a href="/" class="text-gradient">loooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo.ng</a>er</h1>
 		<div class="input">
-			<input id="website" type="url" autofocus />
-			<button onclick="longer()">lo.nger</button>
+			<input tabindex="0" id="website" placeholder="https://example.com" aria-label="URL to lengthen" type="url" autofocus />
+			<button type="submit" onclick="longer()">lo.nger</button>
 		</div>
 		<div id="stats" style="visibility: hidden">Original: <span id="original"></span>, New: <span id="new"></span>, +<span id="percent"></span>%</div>
 		<a id="result" target="_blank"></a>
 	</main>
 	<script is:inline>
 		document.getElementById("website").addEventListener("keypress", function(event) {
-			console.log(event);
 			if (event.key === "Enter") {
 				event.preventDefault();
 				longer();

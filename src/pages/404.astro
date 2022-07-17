@@ -19,9 +19,8 @@ import Layout from "../layouts/Layout.astro";
         pieces[i] = bases[parseInt(pieces[i], 2)];
       }
 
-      var decoded = atob(pieces.join(''));
-
       try {
+        var decoded = atob(pieces.join(''));
         new URL(decoded);
         window.location.href = decoded;
       } catch {}
