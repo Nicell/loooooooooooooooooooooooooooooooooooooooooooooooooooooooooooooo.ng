@@ -13,15 +13,20 @@ import Layout from "../layouts/Layout.astro";
 			try {
 				new URL(website);
 			} catch { 
-				Toastify({
-					text: "Input is not a URL.",
-					gravity: "top",
-					position: "center",
-					style: {
-						background: "linear-gradient(to right, #d50000, #ff1744)",
-					}
-				}).showToast();
-				return;
+				try {
+					website = "https://" + website;
+					new URL(website);
+				} catch {
+					Toastify({
+						text: "Input is not a URL.",
+						gravity: "top",
+						position: "center",
+						style: {
+							background: "linear-gradient(to right, #d50000, #ff1744)",
+						}
+					}).showToast();
+					return;
+				}
 			}
 			var base64 = btoa(website);
 			var base64arr = base64.split("");
