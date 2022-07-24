@@ -22,7 +22,7 @@ import Layout from "../layouts/Layout.astro";
       try {
         var decoded = atob(pieces.join('')); // Decode the base64 string
         var urled = new URL(decoded);
-				if (urled.protocol !== 'https' && urled.protocol !== 'http') {
+				if (urled.protocol !== 'https:' && urled.protocol !== 'http:') {
 					throw new Error('Invalid protocol');
 				}
         window.location.href = decoded;
