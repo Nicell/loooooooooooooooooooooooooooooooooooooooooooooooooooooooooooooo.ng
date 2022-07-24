@@ -13,7 +13,7 @@ import Layout from "../layouts/Layout.astro";
 			try {
 				var urled = new URL(website);
 				// Make sure the URL is http or https
-				if (urled.protocol !== 'https' && urled.protocol !== 'http') {
+				if (urled.protocol !== 'https:' && urled.protocol !== 'http:') {
 					Toastify({
 						text: "Invalid URL protocol.",
 						gravity: "top",
