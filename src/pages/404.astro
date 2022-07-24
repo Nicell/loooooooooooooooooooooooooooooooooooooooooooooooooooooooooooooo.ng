@@ -7,21 +7,24 @@ import Layout from "../layouts/Layout.astro";
     <script is:inline>
       var bases = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '+', '/', '='];
 
-      var binary = window.location.pathname.substring(2, window.location.pathname.length - 2);
-      binary = binary.replaceAll('o', '0').replaceAll('O', '1');
-      var yardstick = new RegExp(`.{9}`, 'g');
-      var pieces = binary.match(yardstick);
+      var binary = window.location.pathname.substring(2, window.location.pathname.length - 2); // Retrieve oOs from path
+      binary = binary.replaceAll('o', '0').replaceAll('O', '1'); // Replace oOs with 0s 1s
+      var yardstick = new RegExp(`.{9}`, 'g'); // Create regex to match 9-bit chunks
+      var pieces = binary.match(yardstick); // Create array of 9-bit chunks
       var accumulated = (pieces.length * 9);
       var modulo = binary.length % accumulated;
-      if (modulo) pieces.push(binary.slice(accumulated));
+      if (modulo) pieces.push(binary.slice(accumulated)); // If binary is not a multiple of 9, add the remaining bits to the end
 
       for (var i = 0; i < pieces.length; i++) {
-        pieces[i] = bases[parseInt(pieces[i], 2)];
+        pieces[i] = bases[parseInt(pieces[i], 2)]; // Convert each 9-bit chunk to a base64 character
       }
 
       try {
-        var decoded = atob(pieces.join(''));
-        new URL(decoded);
+        var decoded = atob(pieces.join('')); // Decode the base64 string
+        var urled = new URL(decoded);
+				if (urled.protocol !== 'https' && urled.protocol !== 'http') {
+					throw new Error('Invalid protocol');
+				}
         window.location.href = decoded;
       } catch {}
     </script>
