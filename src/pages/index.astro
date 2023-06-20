@@ -10,6 +10,8 @@ import Layout from "../layouts/Layout.astro";
 
 		function longer() {
 			var website = document.getElementById("website").value;
+            var strippedURL = website.replace(/^(https?:\/\/)?([^\/]+).*/, "$2");
+            var website = punycode.toASCII(strippedURL);
 			try {
 				var urled = new URL(website);
 				// Make sure the URL is http or https
