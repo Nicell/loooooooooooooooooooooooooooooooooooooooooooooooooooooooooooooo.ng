@@ -5,13 +5,13 @@ import Layout from "../layouts/Layout.astro";
 <Layout title="URL Lengthener: l62.ng">
 	<link rel="preload" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
 	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js" defer></script>
-	<script src="https://cdn.jsdelivr.net/npm/punycode@2.3.0/punycode.min.js"></script>
+	<script src="/punycode.js" is:inline></script>
 	<script is:inline>
 		var bases = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '+', '/', '='];
 		function longer() {
 			var website = document.getElementById("website").value;
-            		var strippedURL = website.replace(/^(https?:\/\/)?([^\/]+).*/, "$2");
-            		website = punycode.toASCII(strippedURL);
+			var strippedURL = website.replace(/^(https?:\/\/)?([^\/]+).*/, "$2");
+			website = punycode.toASCII(strippedURL);
 			try {
 				var urled = new URL(website);
 				// Make sure the URL is http or https
