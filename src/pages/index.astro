@@ -10,10 +10,9 @@ import Layout from "../layouts/Layout.astro";
 		var bases = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '+', '/', '='];
 		function longer() {
 			var website = document.getElementById("website").value;
-			var strippedURL = website.replace(/^(https?:\/\/)?([^\/]+).*/, "$2");
-			website = punycode.toASCII(strippedURL);
+			var urled;
 			try {
-				var urled = new URL(website);
+				urled = new URL(website);
 				// Make sure the URL is http or https
 				if (urled.protocol !== 'https:' && urled.protocol !== 'http:') {
 					Toastify({
@@ -30,6 +29,7 @@ import Layout from "../layouts/Layout.astro";
 				try {
 					// Attempt to add a protocol if it is missing
 					website = "https://" + website;
+					urled = new URL(website);
 				} catch {
 					Toastify({
 						text: "Input is not a URL.",
@@ -42,6 +42,8 @@ import Layout from "../layouts/Layout.astro";
 					return;
 				}
 			}
+			urled.host = punycode.toASCII(urled.host);
+			website = urled.toString();
 			var base64 = btoa(website);
 			var base64arr = base64.split("");
 			var output = "";
